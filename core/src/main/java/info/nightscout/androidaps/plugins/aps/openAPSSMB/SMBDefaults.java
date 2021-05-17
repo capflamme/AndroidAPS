@@ -33,6 +33,7 @@ public class SMBDefaults {
     public final static boolean adv_target_adjustments = false; // lower target automatically when BG and eventualBG are high
     public final static boolean exercise_mode = false; // when true, > 105 mg/dL high temp target adjusts sensitivityRatio for exercise_mode. This majorly changes the behavior of high temp targets from before. synonmym for high_temptarget_raises_sensitivity
     public final static int half_basal_exercise_target = 160; // when temptarget is 160 mg/dL *and* exercise_mode=true, run 50% basal at this level (120 = 75%; 140 = 60%)
+    public final static double SMB_insulinReq_ratio = 0.5; // Proportion of insulinReq that is delivered by SMB. Default behavior is 50%.
     // create maxCOB and default it to 120 because that's the most a typical body can absorb over 4 hours.
     // (If someone enters more carbs or stacks more; OpenAPS will just truncate dosing based on 120.
     // Essentially, this just limits AMA/SMB as a safety cap against excessive COB entry)
