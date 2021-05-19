@@ -599,12 +599,13 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
             }
             UAMpredBG = UAMpredBGs[UAMpredBGs.length-1] + predBGI + Math.min(0, predDev) + predUCI;
             //console.error(predBGI, predCI, predUCI);
-            // truncate all BG predictions at 4 hours
-            if ( IOBpredBGs.length < 48) { IOBpredBGs.push(IOBpredBG); }
-            if ( COBpredBGs.length < 48) { COBpredBGs.push(COBpredBG); }
-            if ( aCOBpredBGs.length < 48) { aCOBpredBGs.push(aCOBpredBG); }
-            if ( UAMpredBGs.length < 48) { UAMpredBGs.push(UAMpredBG); }
-            if ( ZTpredBGs.length < 48) { ZTpredBGs.push(ZTpredBG); }
+            // truncate all BG predictions to the number of minutes specified in the profile
+            var Max_Prediction_values=round(profile.Prediction_Horizon / 5,0);
+            if ( IOBpredBGs.length < Max_Prediction_values) { IOBpredBGs.push(IOBpredBG); }
+            if ( COBpredBGs.length < Max_Prediction_values) { COBpredBGs.push(COBpredBG); }
+            if ( aCOBpredBGs.length < Max_Prediction_values) { aCOBpredBGs.push(aCOBpredBG); }
+            if ( UAMpredBGs.length < Max_Prediction_values) { UAMpredBGs.push(UAMpredBG); }
+            if ( ZTpredBGs.length < Max_Prediction_values) { ZTpredBGs.push(ZTpredBG); }
             // calculate minGuardBGs without a wait from COB, UAM, IOB predBGs
             if ( COBpredBG < minCOBGuardBG ) { minCOBGuardBG = round(COBpredBG); }
             if ( UAMpredBG < minUAMGuardBG ) { minUAMGuardBG = round(UAMpredBG); }

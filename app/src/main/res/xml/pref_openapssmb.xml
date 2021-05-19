@@ -71,7 +71,16 @@
             android:key="@string/key_enableSMB_after_carbs"
             android:summary="@string/enablesmbaftercarbs_summary"
             android:title="@string/enablesmbaftercarbs" />
-
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+            android:defaultValue="240"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:key="@string/key_Prediction_Horizon"
+            android:dialogMessage="@string/Prediction_Horizon_summary"
+            android:title="@string/Prediction_Horizon_title"
+            validate:maxNumber="300"
+            validate:minNumber="30"
+            validate:testType="numericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="0.5"
             android:dialogMessage="@string/SMB_insulinReq_ratio_summary"

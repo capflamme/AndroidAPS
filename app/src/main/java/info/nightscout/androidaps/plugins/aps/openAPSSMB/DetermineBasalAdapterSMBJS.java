@@ -273,6 +273,7 @@ public class DetermineBasalAdapterSMBJS {
         mProfile.put("A52_risk_enable", SMBDefaults.A52_risk_enable);
 
         boolean smbEnabled = sp.getBoolean(R.string.key_use_smb, false);
+        mProfile.put("Prediction_Horizon", sp.getInt(R.string.key_Prediction_Horizon, SMBDefaults.Prediction_Horizon));
         mProfile.put("SMB_insulinReq_ratio", sp.getDouble(R.string.key_SMB_insulinReq_ratio, SMBDefaults.SMB_insulinReq_ratio));
         mProfile.put("SMBInterval", sp.getInt(R.string.key_smbinterval, SMBDefaults.SMBInterval));
         mProfile.put("enableSMB_with_COB", smbEnabled && sp.getBoolean(R.string.key_enableSMB_with_COB, false));

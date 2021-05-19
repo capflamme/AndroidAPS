@@ -623,6 +623,9 @@
     <string name="wear_detailed_delta_summary">Show delta with one more decimal place</string>
     <string name="key_smbinterval" translatable="false">smbinterval</string>
     <string name="smbinterval_summary">How frequently SMBs will be given in min</string>
+    <string name="key_Prediction_Horizon" translatable="false">Prediction_Horizon</string>
+    <string name="Prediction_Horizon_title">Prediction lines Horizon</string>
+    <string name="Prediction_Horizon_summary">The number of minutes after which Predictions (IOBpredBG, COBpredBG, UAMpredBG, ZTpredBG, etc.) are truncated. The default is 240min (4h). Reducing this value will results in more aggressive insulin delivery.</string>
     <string name="key_SMB_insulinReq_ratio" translatable="false">SMB_insulinReq_ratio</string>
     <string name="SMB_insulinReq_ratio_title">SMB to insulinReq ratio</string>
     <string name="SMB_insulinReq_ratio_summary">Determine the proportion of required insulin that will be delivered with SMB.</string>
