@@ -26,10 +26,27 @@
             validate:floatminNumber="0"
             validate:testType="floatNumericRange" />
 
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+            android:defaultValue="240"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:key="@string/key_Prediction_Horizon"
+            android:dialogMessage="@string/Prediction_Horizon_summary"
+            android:title="@string/Prediction_Horizon_title"
+            validate:maxNumber="300"
+            validate:minNumber="30"
+            validate:testType="numericRange" />
+
         <SwitchPreference
             android:defaultValue="false"
             android:key="openapsama_useautosens"
             android:title="@string/openapsama_useautosens" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/key_use_uam"
+            android:summary="@string/enableuam_summary"
+            android:title="@string/enableuam" />
 
         <SwitchPreference
             android:defaultValue="false"
@@ -71,71 +88,64 @@
             android:key="@string/key_enableSMB_after_carbs"
             android:summary="@string/enablesmbaftercarbs_summary"
             android:title="@string/enablesmbaftercarbs" />
+
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
-            android:defaultValue="240"
-            android:digits="0123456789"
-            android:inputType="number"
-            android:key="@string/key_Prediction_Horizon"
-            android:dialogMessage="@string/Prediction_Horizon_summary"
-            android:title="@string/Prediction_Horizon_title"
-            validate:maxNumber="300"
-            validate:minNumber="30"
-            validate:testType="numericRange" />
-        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
-            android:defaultValue="0.5"
-            android:dialogMessage="@string/SMB_insulinReq_ratio_summary"
-            android:inputType="numberDecimal"
             android:key="@string/key_SMB_insulinReq_ratio"
             android:title="@string/SMB_insulinReq_ratio_title"
+            android:dialogMessage="@string/SMB_insulinReq_ratio_summary"
+            android:dependency="@string/key_use_smb"
+            android:defaultValue="0.5"
+            android:inputType="numberDecimal"
             validate:floatmaxNumber="1.0"
             validate:floatminNumber="0.1"
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+            android:key="@string/key_SMB_insulinReq_ratio_meal"
+            android:title="@string/SMB_insulinReq_ratio_meal_title"
+            android:dialogMessage="@string/SMB_insulinReq_ratio_meal_summary"
+            android:dependency="@string/key_use_smb"
+            android:defaultValue="0.5"
+            android:inputType="numberDecimal"
+            validate:floatmaxNumber="1.0"
+            validate:floatminNumber="0.1"
+            validate:testType="floatNumericRange" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+            android:key="@string/key_smbinterval"
+            android:title="@string/smbinterval_summary"
+            android:dependency="@string/key_use_smb"
             android:defaultValue="3"
             android:digits="0123456789"
             android:inputType="number"
-            android:key="@string/key_smbinterval"
             android:maxLines="20"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="@string/smbinterval_summary"
             validate:maxNumber="10"
             validate:minNumber="1"
             validate:testType="numericRange" />
 
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+            android:key="@string/key_smbmaxminutes"
+            android:title="@string/smbmaxminutes_title"
+            android:dialogMessage="@string/mealsmbmaxminutes_summary"
+            android:dependency="@string/key_use_smb"
             android:defaultValue="30"
             android:digits="0123456789"
-            android:entries="@array/smbMaxMinutes"
-            android:entryValues="@array/smbMaxMinutes"
             android:inputType="number"
-            android:key="@string/key_smbmaxminutes"
-            android:title="@string/smbmaxminutes_summary"
             validate:maxNumber="480"
             validate:minNumber="15"
             validate:testType="numericRange" />
 
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+            android:key="@string/key_mealsmbmaxminutes"
+            android:title="@string/mealsmbmaxminutes_title"
+            android:dialogMessage="@string/mealsmbmaxminutes_summary"
+            android:dependency="@string/key_use_smb"
             android:defaultValue="30"
-            android:dialogMessage="@string/uamsmbmaxminutes"
             android:digits="0123456789"
             android:inputType="number"
-            android:key="@string/key_uamsmbmaxminutes"
-            android:maxLines="20"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
-            android:title="@string/uamsmbmaxminutes_summary"
             validate:maxNumber="480"
             validate:minNumber="15"
             validate:testType="numericRange" />
-
-
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="@string/key_use_uam"
-            android:summary="@string/enableuam_summary"
-            android:title="@string/enableuam" />
-
 
         <SwitchPreference
             android:defaultValue="true"

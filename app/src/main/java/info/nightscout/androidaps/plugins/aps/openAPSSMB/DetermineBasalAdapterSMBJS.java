@@ -275,6 +275,7 @@ public class DetermineBasalAdapterSMBJS {
         boolean smbEnabled = sp.getBoolean(R.string.key_use_smb, false);
         mProfile.put("Prediction_Horizon", sp.getInt(R.string.key_Prediction_Horizon, SMBDefaults.Prediction_Horizon));
         mProfile.put("SMB_insulinReq_ratio", sp.getDouble(R.string.key_SMB_insulinReq_ratio, SMBDefaults.SMB_insulinReq_ratio));
+        mProfile.put("SMB_insulinReq_ratio_meal", sp.getDouble(R.string.key_SMB_insulinReq_ratio_meal, SMBDefaults.SMB_insulinReq_ratio));
         mProfile.put("SMBInterval", sp.getInt(R.string.key_smbinterval, SMBDefaults.SMBInterval));
         mProfile.put("enableSMB_with_COB", smbEnabled && sp.getBoolean(R.string.key_enableSMB_with_COB, false));
         mProfile.put("enableSMB_with_temptarget", smbEnabled && sp.getBoolean(R.string.key_enableSMB_with_temptarget, false));
@@ -282,7 +283,7 @@ public class DetermineBasalAdapterSMBJS {
         mProfile.put("enableSMB_always", smbEnabled && sp.getBoolean(R.string.key_enableSMB_always, false) && advancedFiltering);
         mProfile.put("enableSMB_after_carbs", smbEnabled && sp.getBoolean(R.string.key_enableSMB_after_carbs, false) && advancedFiltering);
         mProfile.put("maxSMBBasalMinutes", sp.getInt(R.string.key_smbmaxminutes, SMBDefaults.maxSMBBasalMinutes));
-        mProfile.put("maxUAMSMBBasalMinutes", sp.getInt(R.string.key_uamsmbmaxminutes, SMBDefaults.maxUAMSMBBasalMinutes));
+        mProfile.put("maxMealSMBBasalMinutes", sp.getInt(R.string.key_mealsmbmaxminutes, SMBDefaults.maxSMBBasalMinutes));
         //set the min SMB amount to be the amount set by the pump.
         mProfile.put("bolus_increment", pumpbolusstep);
         mProfile.put("carbsReqThreshold", sp.getInt(R.string.key_carbsReqThreshold, SMBDefaults.carbsReqThreshold));
