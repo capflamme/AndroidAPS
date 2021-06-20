@@ -29,7 +29,7 @@ tempBasalFunctions.setTempBasal = function setTempBasal(rate, duration, profile,
 
     var suggestedRate = round_basal(rate, profile);
     if (typeof(currenttemp) !== 'undefined' && typeof(currenttemp.duration) !== 'undefined' && typeof(currenttemp.rate) !== 'undefined' && currenttemp.duration > (duration-10) && currenttemp.duration <= 120 && suggestedRate <= currenttemp.rate * 1.2 && suggestedRate >= currenttemp.rate * 0.8 && duration > 0 ) {
-        rT.reason += " "+currenttemp.duration+"m left and " + currenttemp.rate + " ~ req " + suggestedRate + "U/hr: no temp required";
+        rT.reason += " "+currenttemp.duration+"m left and " + round(currenttemp.rate,2) + " ~ req " + round(suggestedRate,2) + "U/hr: no temp required";
         return rT;
     }
 
@@ -45,7 +45,7 @@ tempBasalFunctions.setTempBasal = function setTempBasal(rate, duration, profile,
           return rT;
         }
       } else {
-        reason(rT, 'Setting neutral temp basal of ' + profile.current_basal + 'U/hr');
+        reason(rT, 'Setting neutral temp basal of ' + round(profile.current_basal,2) + 'U/hr');
         rT.duration = duration;
         rT.rate = suggestedRate;
         return rT;

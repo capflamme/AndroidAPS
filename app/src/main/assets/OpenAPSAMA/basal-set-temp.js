@@ -30,7 +30,7 @@ var round_basal = require('./round-basal');
 
     var suggestedRate = round_basal(rate, profile);
     if (typeof(currenttemp) !== 'undefined' && typeof(currenttemp.duration) !== 'undefined' && typeof(currenttemp.rate) !== 'undefined' && currenttemp.duration > 20 && suggestedRate <= currenttemp.rate * 1.2 && suggestedRate >= currenttemp.rate * 0.8) {
-        rT.reason += ", but "+currenttemp.duration+"m left and " + currenttemp.rate + " ~ req " + suggestedRate + "U/hr: no action required";
+        rT.reason += ", but "+currenttemp.duration+"m left and " + round(currenttemp.rate,2) + " ~ req " + round(suggestedRate,2) + "U/hr: no action required";
         return rT;
     }
 
@@ -46,7 +46,7 @@ var round_basal = require('./round-basal');
           return rT;
         }
       } else {
-        reason(rT, 'Setting neutral temp basal of ' + profile.current_basal + 'U/hr');
+        reason(rT, 'Setting neutral temp basal of ' + round(profile.current_basal,2) + 'U/hr');
         rT.duration = duration;
         rT.rate = suggestedRate;
         return rT;

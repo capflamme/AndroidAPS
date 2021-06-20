@@ -558,6 +558,7 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
     var remainingCItotal = 0;
     var remainingCIs = [];
     var predCIs = [];
+    var SMBInsulinReqRatio = profile.SMB_insulinReq_ratio;
     try {
         iobArray.forEach(function(iobTick) {
             //console.error(iobTick);
@@ -1058,23 +1059,24 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
             if (typeof profile.maxSMBBasalMinutes === 'undefined' ) {
                 var maxBolus = round( profile.current_basal * 30 / 60 ,1);
                 console.error("profile.maxSMBBasalMinutes undefined: defaulting to 30m");
-            // if IOB covers more than COB, limit maxBolus to 30m of basal
-            } else if ( iob_data.iob > mealInsulinReq && iob_data.iob > 0 ) {
-                console.error("IOB",iob_data.iob,"> COB",meal_data.mealCOB+"; mealInsulinReq =",mealInsulinReq);
-                if (profile.maxUAMSMBBasalMinutes) {
-                    console.error("profile.maxUAMSMBBasalMinutes:",profile.maxUAMSMBBasalMinutes,"profile.current_basal:",profile.current_basal);
-                    maxBolus = round( profile.current_basal * profile.maxUAMSMBBasalMinutes / 60 ,1);
+            } else if (((iob_data.iob > 2 * profile.current_basal) && enableUAM) || meal_data.mealCOB > 0) {
+                if (profile.maxMealSMBBasalMinutes) {
+                    console.error("profile.maxMealSMBBasalMinutes:",profile.maxMealSMBBasalMinutes);
+                    maxBolus = round( profile.current_basal * profile.maxMealSMBBasalMinutes / 60 ,1);
                 } else {
-                    console.error("profile.maxUAMSMBBasalMinutes undefined: defaulting to 30m");
+                    console.error("profile.maxMealSMBBasalMinutes undefined: defaulting to 30m");
                     maxBolus = round( profile.current_basal * 30 / 60 ,1);
                 }
+                // SMBInsulinReqRatio can be different (set in pref.) if meal (COB or UAM) is detected.
+                SMBInsulinReqRatio = profile.SMB_insulinReq_ratio_meal;
             } else {
                 console.error("profile.maxSMBBasalMinutes:",profile.maxSMBBasalMinutes,"profile.current_basal:",profile.current_basal);
                 maxBolus = round( profile.current_basal * profile.maxSMBBasalMinutes / 60 ,1);
             }
-            // bolus 1/2 the insulinReq, up to maxBolus, rounding down to nearest bolus increment
+            // bolus pref defined proportion of insulinReq, up to maxBolus, rounding down to nearest bolus increment
             var roundSMBTo = 1 / profile.bolus_increment;
-            var microBolus = Math.floor(Math.min(insulinReq*profile.SMB_insulinReq_ratio,maxBolus)*roundSMBTo)/roundSMBTo;
+            var microBolus = Math.floor(Math.min(insulinReq*SMBInsulinReqRatio,maxBolus)*roundSMBTo)/roundSMBTo;
+            console.error("iob_data.iob:",iob_data.iob,"profile.current_basal:",profile.current_basal,"meal_data.mealCOB:",meal_data.mealCOB,"insulinReq:",insulinReq,"SMBInsulinReqRatio:",SMBInsulinReqRatio,"maxBolus:",maxBolus,"microBolus:",microBolus);
             // calculate a long enough zero temp to eventually correct back up to target
             var smbTarget = target_bg;
             worstCaseInsulinReq = (smbTarget - (naive_eventualBG + minIOBPredBG)/2 ) / sens;
@@ -1097,7 +1099,8 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
                 smbLowTempReq = round( basal * durationReq/30 ,2);
                 durationReq = 30;
             }
-            rT.reason += " insulinReq " + insulinReq;
+            rT.reason += "; insulinReq " + insulinReq;
+            rT.reason += ", SMBInsulinReqRatio " + SMBInsulinReqRatio;
             if (microBolus >= maxBolus) {
                 rT.reason +=  "; maxBolus " + maxBolus;
             }

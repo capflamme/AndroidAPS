@@ -629,9 +629,15 @@
     <string name="key_SMB_insulinReq_ratio" translatable="false">SMB_insulinReq_ratio</string>
     <string name="SMB_insulinReq_ratio_title">SMB to insulinReq ratio</string>
     <string name="SMB_insulinReq_ratio_summary">Determine the proportion of required insulin that will be delivered with SMB.</string>
+    <string name="key_SMB_insulinReq_ratio_meal" translatable="false">SMB_insulinReq_ratio_meals</string>
+    <string name="SMB_insulinReq_ratio_meal_title">SMB to insulinReq ratio during meal</string>
+    <string name="SMB_insulinReq_ratio_meal_summary">Determine the proportion of required insulin that will be delivered during meal.</string>
+    <string name="key_smbmaxminutes" translatable="false">smbmaxminutes</string>
+    <string name="smbmaxminutes_title">SMB max minutes</string>
     <string name="smbmaxminutes_summary">Max minutes of basal to limit SMB to</string>
-    <string name="uamsmbmaxminutes">UAM SMB max minutes</string>
-    <string name="uamsmbmaxminutes_summary">Max minutes of basal to limit SMB to for UAM</string>
+    <string name="key_mealsmbmaxminutes" translatable="false">mealsmbmaxminutes</string>
+    <string name="mealsmbmaxminutes_title">SMB max minutes for meals</string>
+    <string name="mealsmbmaxminutes_summary">Max minutes of basal to limit SMB to for meals</string>
     <string name="key_carbsReqThreshold" translatable="false">carbsReqThreshold</string>
     <string name="carbsReqThreshold">Minimum Carbs Required For Suggestion</string>
     <string name="carbsReqThreshold_summary">Minimum grams of carbs to display a carbs suggestion alert. Carbs suggestions below this number will not trigger a notification.</string>
@@ -1096,8 +1102,6 @@
     <string name="key_tidepool_upload_bg" translatable="false">tidepool_upload_bg</string>
     <string name="tidepool_upload_bg">Upload BG tests</string>
 
-    <string name="key_smbmaxminutes" translatable="false">smbmaxminutes</string>
-    <string name="key_uamsmbmaxminutes" translatable="false">uamsmbmaxminutes</string>
     <string name="dst_plugin_name" translatable="false">Daylight Saving time</string>
     <string name="dst_in_24h_warning">Daylight Saving time change in 24h or less</string>
     <string name="dst_loop_disabled_warning">Daylight Saving time change less than 3 hours ago - Closed loop disabled</string>
