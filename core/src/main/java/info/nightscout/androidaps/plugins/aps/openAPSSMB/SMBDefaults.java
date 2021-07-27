@@ -35,7 +35,7 @@ public class SMBDefaults {
     public final static int half_basal_exercise_target = 160; // when temptarget is 160 mg/dL *and* exercise_mode=true, run 50% basal at this level (120 = 75%; 140 = 60%)
     public final static int Prediction_Horizon = 240; // The number of minutes after which Predictions (IOBpredBG, COBpredBG, aCOBpredBG, UAMpredBG ZTpredBG) are truncated. This the prediction horizon and is 4h by default.
     public final static double SMB_insulinReq_ratio = 0.5; // Proportion of insulinReq that is delivered by SMB. Default behavior is 50%.
-
+    public final static double SMB_OverBGTrigger = 180.0; // BG (in mg/DL) over which hyperglycemia insulinReq will be applied
     // create maxCOB and default it to 120 because that's the most a typical body can absorb over 4 hours.
     // (If someone enters more carbs or stacks more; OpenAPS will just truncate dosing based on 120.
     // Essentially, this just limits AMA/SMB as a safety cap against excessive COB entry)

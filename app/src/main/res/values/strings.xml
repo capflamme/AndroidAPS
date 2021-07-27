@@ -632,6 +632,12 @@
     <string name="key_SMB_insulinReq_ratio_meal" translatable="false">SMB_insulinReq_ratio_meals</string>
     <string name="SMB_insulinReq_ratio_meal_title">SMB to insulinReq ratio during meal</string>
     <string name="SMB_insulinReq_ratio_meal_summary">Determine the proportion of required insulin that will be delivered during meal.</string>
+    <string name="key_SMB_insulinReq_ratio_OverBGLimit" translatable="false">SMB_insulinReq_ratio_OverBGLimit</string>
+    <string name="SMB_insulinReq_ratio_OverBGLimit_title">SMB to insulinReq ratio during hyperglycemia</string>
+    <string name="SMB_insulinReq_ratio_OverBGLimit_summary">Determine the proportion of required insulin that will be delivered when over the BG trigger below.</string>
+    <string name="key_SMB_OverBGTrigger" translatable="false">SMB_OverBGTrigger</string>
+    <string name="SMB_OverBGTrigger_title">Hpyerglycemia BG trigger</string>
+    <string name="SMB_OverBGTrigger_summary">BG over which the insulinReq ratio during hyperglycemia is applied.</string>
     <string name="key_smbmaxminutes" translatable="false">smbmaxminutes</string>
     <string name="smbmaxminutes_title">SMB max minutes</string>
     <string name="smbmaxminutes_summary">Max minutes of basal to limit SMB to</string>

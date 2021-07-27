@@ -76,6 +76,7 @@ public class DetermineBasalAdapterSMBJS {
 
     private String scriptDebug = "";
 
+
     /**
      * Main code
      */
@@ -276,6 +277,15 @@ public class DetermineBasalAdapterSMBJS {
         mProfile.put("Prediction_Horizon", sp.getInt(R.string.key_Prediction_Horizon, SMBDefaults.Prediction_Horizon));
         mProfile.put("SMB_insulinReq_ratio", sp.getDouble(R.string.key_SMB_insulinReq_ratio, SMBDefaults.SMB_insulinReq_ratio));
         mProfile.put("SMB_insulinReq_ratio_meal", sp.getDouble(R.string.key_SMB_insulinReq_ratio_meal, SMBDefaults.SMB_insulinReq_ratio));
+        mProfile.put("SMB_insulinReq_ratio_OverBGLimit", sp.getDouble(R.string.key_SMB_insulinReq_ratio_OverBGLimit, SMBDefaults.SMB_insulinReq_ratio));
+        double SMB_OverBGTrigger_Default;
+        if (profile.getUnits().equals(Constants.MGDL)) {
+            SMB_OverBGTrigger_Default = SMBDefaults.SMB_OverBGTrigger;
+        }
+        else {
+            SMB_OverBGTrigger_Default = SMBDefaults.SMB_OverBGTrigger * Constants.MGDL_TO_MMOLL;
+        }
+        mProfile.put("SMB_OverBGTrigger", Profile.toMgdl(sp.getDouble(R.string.key_SMB_OverBGTrigger,SMB_OverBGTrigger_Default),profile.getUnits()));
         mProfile.put("SMBInterval", sp.getInt(R.string.key_smbinterval, SMBDefaults.SMBInterval));
         mProfile.put("enableSMB_with_COB", smbEnabled && sp.getBoolean(R.string.key_enableSMB_with_COB, false));
         mProfile.put("enableSMB_with_temptarget", smbEnabled && sp.getBoolean(R.string.key_enableSMB_with_temptarget, false));

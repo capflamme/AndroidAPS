@@ -54,7 +54,6 @@ public class Profile {
     private LongSparseArray<Double> targetLow_v; // oldest at index 0
     private JSONArray targetHigh;
     private LongSparseArray<Double> targetHigh_v; // oldest at index 0
-
     private int percentage;
     private int timeshift;
 

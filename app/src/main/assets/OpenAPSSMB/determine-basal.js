@@ -1068,7 +1068,12 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
                     maxBolus = round( profile.current_basal * 30 / 60 ,1);
                 }
                 // SMBInsulinReqRatio can be different (set in pref.) if meal (COB or UAM) is detected.
-                SMBInsulinReqRatio = profile.SMB_insulinReq_ratio_meal;
+                if (bg <= profile.SMB_OverBGTrigger) {
+                    SMBInsulinReqRatio = profile.SMB_insulinReq_ratio_meal;
+                }
+                else {
+                    SMBInsulinReqRatio = profile.SMB_insulinReq_ratio_OverBGLimit;
+                }
             } else {
                 console.error("profile.maxSMBBasalMinutes:",profile.maxSMBBasalMinutes,"profile.current_basal:",profile.current_basal);
                 maxBolus = round( profile.current_basal * profile.maxSMBBasalMinutes / 60 ,1);
